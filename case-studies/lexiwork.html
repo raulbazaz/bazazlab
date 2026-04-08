@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LexiWork Case Study | Bazaz Lab</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/css/styles.css">
+    <style>
+        .case-study-page {
+            padding-top: 100px;
+            min-height: 100vh;
+        }
+
+        .case-study-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px 60px;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-secondary);
+            font-size: 14px;
+            margin-bottom: 40px;
+            transition: color 0.3s ease;
+        }
+
+        .back-link:hover {
+            color: var(--accent-color);
+        }
+
+        /* ── Two-column layout ── */
+        .case-study-layout {
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 72px;
+            align-items: start;
+        }
+
+        .case-study-content {
+            min-width: 0;
+        }
+
+        /* ── Sticky mockup column ── */
+        .case-study-mockup-col {
+            position: sticky;
+            top: 110px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .android-mockup {
+            display: flex;
+            justify-content: center;
+        }
+
+        .mockup-nav {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 14px;
+            margin-top: 14px;
+            width: 100%;
+        }
+
+        /* ── Header ── */
+        .case-study-header {
+            margin-bottom: 20px;
+        }
+
+        .case-study-header .case-category {
+            font-size: 12px;
+            color: var(--accent-color);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 600;
+        }
+
+        .case-study-header h1 {
+            font-size: clamp(36px, 5vw, 52px);
+            margin: 10px 0 6px;
+            letter-spacing: -2px;
+        }
+
+        .case-study-header .subtitle {
+            font-size: 18px;
+            color: var(--text-secondary);
+        }
+
+        /* ── Meta bar ── */
+        .case-study-meta {
+            display: flex;
+            gap: 32px;
+            padding: 12px 0;
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+        }
+
+        .meta-item {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .meta-label {
+            font-size: 11px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+
+        .meta-value {
+            font-size: 15px;
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+
+        /* ── Sections ── */
+        .case-study-section {
+            margin-bottom: 20px;
+            padding: 0;
+        }
+
+        .case-study-section h2 {
+            font-size: 20px;
+            color: var(--accent-color);
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .case-study-section p {
+            color: var(--text-primary);
+            font-size: 15px;
+            line-height: 1.75;
+        }
+
+        /* ── Features grid ── */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+            margin-top: 12px;
+        }
+
+        .feature-item {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            padding: 18px;
+            border-radius: 12px;
+        }
+
+        .feature-item strong {
+            display: block;
+            margin-bottom: 6px;
+            color: var(--text-primary);
+            font-size: 14px;
+        }
+
+        .feature-item p {
+            font-size: 13px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        /* ── Tech tags ── */
+        .case-study-tech {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            padding-top: 24px;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .tech-tag {
+            padding: 8px 16px;
+            background: var(--accent-color);
+            color: #1a1a1a;
+            font-size: 13px;
+            font-weight: 600;
+            border-radius: 10px;
+        }
+
+        /* ── Phone frame ── */
+        .android-mockup {
+            display: flex;
+            justify-content: center;
+        }
+
+        .phone-frame {
+            width: 240px;
+            height: 500px;
+            background: #111;
+            border-radius: 38px;
+            border: 3px solid #2a2a2a;
+            box-shadow: 0 0 0 1px #1a1a1a, 0 32px 80px rgba(0,0,0,0.7), inset 0 0 0 2px #1a1a1a;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .phone-notch {
+            width: 80px;
+            height: 20px;
+            background: #111;
+            border-radius: 0 0 14px 14px;
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+        }
+
+        .phone-screen {
+            width: 100%;
+            flex: 1;
+            background: linear-gradient(160deg, #0d1117 0%, #0a1628 100%);
+            overflow: hidden;
+            padding: 28px 14px 14px;
+        }
+
+        .phone-screen-content {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .app-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 2px;
+        }
+
+        .app-title {
+            font-size: 14px;
+            font-weight: 700;
+            color: #f5a623;
+            letter-spacing: 0.5px;
+        }
+
+        .app-greeting {
+            font-size: 12px;
+            font-weight: 600;
+            color: #fff;
+        }
+
+        .app-subtitle {
+            font-size: 10px;
+            color: #555;
+            margin-top: -6px;
+        }
+
+        .app-progress-card {
+            background: #1a1a2e;
+            border: 1px solid #2a2a4a;
+            border-radius: 10px;
+            padding: 8px 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .progress-label {
+            font-size: 8px;
+            color: #777;
+            white-space: nowrap;
+        }
+
+        .progress-bar-wrap {
+            flex: 1;
+            height: 5px;
+            background: #222;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .progress-bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #f5a623, #ff6b35);
+            border-radius: 4px;
+        }
+
+        .progress-pct {
+            font-size: 9px;
+            font-weight: 700;
+            color: #f5a623;
+            white-space: nowrap;
+        }
+
+        .app-modules {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 6px;
+        }
+
+        .app-module {
+            background: #161616;
+            border: 1px solid #222;
+            border-radius: 10px;
+            padding: 9px 4px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            font-size: 7px;
+            color: #555;
+        }
+
+        .app-module i { font-size: 13px; color: #333; }
+
+        .app-module.active-module {
+            background: #1a1200;
+            border-color: #f5a623;
+            color: #f5a623;
+        }
+
+        .app-module.active-module i { color: #f5a623; }
+
+        .app-streak {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            background: #1a0f00;
+            border: 1px solid #3a2200;
+            border-radius: 10px;
+            padding: 7px 10px;
+            font-size: 9px;
+            color: #ff9944;
+            font-weight: 600;
+        }
+
+        .app-badge-row {
+            display: flex;
+            gap: 8px;
+        }
+
+        .app-badge {
+            width: 32px;
+            height: 32px;
+            background: #1a1a1a;
+            border: 1px solid #222;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            color: #333;
+        }
+
+        .app-badge.unlocked {
+            background: #1a1200;
+            border-color: #f5a623;
+            color: #f5a623;
+        }
+
+        .phone-home-bar {
+            height: 22px;
+            background: #111;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .phone-home-bar::after {
+            content: '';
+            width: 55px;
+            height: 4px;
+            background: #2a2a2a;
+            border-radius: 2px;
+        }
+
+        /* ── Screenshot slider ── */
+        .phone-screen--img {
+            padding: 0 !important;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .screenshot-slider {
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+
+        .screenshot-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .screenshot-slide.active {
+            opacity: 1;
+        }
+
+        /* ── Mockup nav buttons ── */
+        .mockup-nav {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            margin-top: 16px;
+        }
+
+        .mockup-btn {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            border: 1px solid var(--border-color);
+            background: var(--bg-card);
+            color: var(--text-primary);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 13px;
+            transition: all 0.2s ease;
+        }
+
+        .mockup-btn:hover {
+            border-color: var(--accent-color);
+            color: var(--accent-color);
+        }
+
+        .mockup-counter {
+            font-size: 12px;
+            color: var(--text-muted);
+            min-width: 36px;
+            text-align: center;
+        }
+
+        @media (max-width: 900px) {
+            .case-study-layout {
+                grid-template-columns: 1fr;
+            }
+            .case-study-mockup-col {
+                position: static;
+                order: -1;
+            }
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="/" class="nav-brand">
+                <svg class="brand-icon" id="brandIcon" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <circle cx="12" cy="3" r="3" fill="white"/>
+                    <circle cx="19.8" cy="7.5" r="3" fill="white"/>
+                    <circle cx="19.8" cy="16.5" r="3" fill="white"/>
+                    <circle cx="12" cy="21" r="3" fill="white"/>
+                    <circle cx="4.2" cy="16.5" r="3" fill="white"/>
+                    <circle cx="4.2" cy="7.5" r="3" fill="white"/>
+                </svg>
+                <span class="brand-bold">Bazaz</span> Lab
+            </a>
+            <ul class="nav-links">
+                <li><a href="/#services">SERVICES</a></li>
+                <li><a href="/#case-studies">CASE STUDIES</a></li>
+                <li><a href="/#process">PROCESS</a></li>
+                <li><a href="/#about">ABOUT</a></li>
+            </ul>
+            <div class="nav-actions">
+                <a href="/#contact" class="cta-btn">CONTACT</a>
+            </div>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <main class="case-study-page">
+        <div class="case-study-container">
+            <div class="case-study-layout">
+
+                <!-- LEFT: Content -->
+                <div class="case-study-content">
+                    <header class="case-study-header">
+                        <span class="case-category">Android App</span>
+                        <h1>LexiWork</h1>
+                        <p class="subtitle">AI-Powered Professional English Learning</p>
+                    </header>
+
+                    <div class="case-study-meta">
+                        <div class="meta-item">
+                            <span class="meta-label">Platform</span>
+                            <span class="meta-value">Android</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Timeline</span>
+                            <span class="meta-value">8 weeks</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Team</span>
+                            <span class="meta-value">3 devs, 1 designer</span>
+                        </div>
+                    </div>
+
+                    <section class="case-study-section">
+                        <h2>The Challenge</h2>
+                        <p>Professionals in Law, Medicine, Business, and Engineering across India needed specialized English training that generic language apps couldn't provide. Our client required a solution addressing field-specific vocabulary, pronunciation challenges influenced by regional languages, and low engagement with traditional learning methods.</p>
+                    </section>
+
+                    <section class="case-study-section">
+                        <h2>The Solution</h2>
+                        <p>Bazaz Lab developed LexiWork, a comprehensive Flutter application combining AI personalization with scientifically-backed pronunciation training. We integrated Groq AI to generate field-specific content dynamically while ensuring the platform remained engaging through strategic gamification.</p>
+                    </section>
+
+                    <section class="case-study-section">
+                        <h2>Key Features Delivered</h2>
+                        <div class="features-grid">
+                            <div class="feature-item">
+                                <strong>AI-Powered Personalization</strong>
+                                <p>Groq API integration delivers vocabulary, scenarios, and recommendations tailored to each user's profession and Mother Tongue Influence patterns.</p>
+                            </div>
+                            <div class="feature-item">
+                                <strong>Complete Pronunciation Lab</strong>
+                                <p>42 sounds (13 vowels, 24 consonants, 5 diphthongs) with integrated YouTube demonstrations showing precise tongue/lip movements.</p>
+                            </div>
+                            <div class="feature-item">
+                                <strong>Gamification Engine</strong>
+                                <p>Daily login streaks, 15 profession-specific achievement badges, and AI-generated daily challenges drive consistent engagement.</p>
+                            </div>
+                            <div class="feature-item">
+                                <strong>Context-Driven Learning</strong>
+                                <p>Realistic workplace scenarios—courtroom dialogues for lawyers, patient consultations for doctors—ensure practical application.</p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="case-study-section">
+                        <h2>Technical Execution</h2>
+                        <p>Built with Flutter for cross-platform deployment, LexiWork leverages Firebase for authentication and real-time data sync, integrates YouTube Player API for video demonstrations, and utilizes Groq AI for dynamic content generation. The clean, modern UI uses the Iconsax icon library for aesthetic consistency.</p>
+                    </section>
+
+                    <section class="case-study-section">
+                        <h2>Results &amp; Impact</h2>
+                        <p>LexiWork successfully bridges the critical gap in professional English education for Indian learners. The platform's combination of AI-driven personalization, comprehensive pronunciation training, and engaging gamification provides professionals with practical tools for workplace communication confidence.</p>
+                    </section>
+
+                    <div class="case-study-tech">
+                        <span class="tech-tag">Flutter</span>
+                        <span class="tech-tag">Firebase</span>
+                        <span class="tech-tag">Groq AI</span>
+                        <span class="tech-tag">YouTube API</span>
+                    </div>
+                </div>
+
+                <!-- RIGHT: Sticky Android Mockup -->
+                <div class="case-study-mockup-col">
+                    <div class="android-mockup">
+                        <div class="phone-frame">
+                            <div class="phone-screen phone-screen--img">
+                                <div class="screenshot-slider">
+                                    <img class="screenshot-slide active" src="/screenshots/Screenshot_20260406_104324.jpg" alt="LexiWork screenshot 1">
+                                    <img class="screenshot-slide" src="/screenshots/Screenshot_20260406_104335.jpg" alt="LexiWork screenshot 2">
+                                    <img class="screenshot-slide" src="/screenshots/Screenshot_20260406_104352.jpg" alt="LexiWork screenshot 3">
+                                    <img class="screenshot-slide" src="/screenshots/Screenshot_20260406_104400.jpg" alt="LexiWork screenshot 4">
+                                    <img class="screenshot-slide" src="/screenshots/Screenshot_20260406_104415.jpg" alt="LexiWork screenshot 5">
+                                    <img class="screenshot-slide" src="/screenshots/Screenshot_20260406_104612.jpg" alt="LexiWork screenshot 6">
+                                </div>
+                            </div>
+                            <div class="phone-home-bar"></div>
+                        </div>
+                    </div>
+                    <!-- Nav buttons below the mockup -->
+                    <div class="mockup-nav">
+                        <button class="mockup-btn" id="prevBtn" onclick="slideScreenshot(-1)">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <span class="mockup-counter" id="slideCounter">1 / 6</span>
+                        <button class="mockup-btn" id="nextBtn" onclick="slideScreenshot(1)">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                </div>
+                <div class="footer-links-group">
+                    <a href="/#services" class="footer-link">Services</a>
+                    <a href="/#case-studies" class="footer-link">Case Studies</a>
+                    <a href="/#process" class="footer-link">Process</a>
+                    <a href="/#about" class="footer-link">About</a>
+                    <a href="/#contact" class="footer-link">Contact</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 BazazLab. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Brand icon rotation on scroll
+        const brandIcon = document.getElementById('brandIcon');
+        if (brandIcon) {
+            window.addEventListener('scroll', () => {
+                const scrollY = window.pageYOffset;
+                brandIcon.style.transform = `rotate(${scrollY * 0.3}deg)`;
+            });
+        }
+
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navLinks = document.querySelector('.nav-links');
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            mobileMenuBtn.classList.toggle('active');
+        });
+
+        // Screenshot slider
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.screenshot-slide');
+        const counter = document.getElementById('slideCounter');
+        const total = slides.length;
+
+        function slideScreenshot(dir) {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (currentSlide + dir + total) % total;
+            slides[currentSlide].classList.add('active');
+            counter.textContent = `${currentSlide + 1} / ${total}`;
+        }
+
+        // Smooth mouse wheel scrolling — matches main page feel
+        let isScrolling = false;
+        let targetScroll = window.pageYOffset;
+
+        window.addEventListener('wheel', (e) => {
+            e.preventDefault();
+            targetScroll += e.deltaY * 1.0;
+            targetScroll = Math.max(0, Math.min(targetScroll, document.body.scrollHeight - window.innerHeight));
+            if (!isScrolling) {
+                isScrolling = true;
+                smoothScroll();
+            }
+        }, { passive: false });
+
+        function smoothScroll() {
+            const currentScroll = window.pageYOffset;
+            const diff = targetScroll - currentScroll;
+            if (Math.abs(diff) > 0.5) {
+                window.scrollTo(0, currentScroll + diff * 0.65);
+                requestAnimationFrame(smoothScroll);
+            } else {
+                window.scrollTo(0, targetScroll);
+                isScrolling = false;
+            }
+        }
+    </script>
+</body>
+</html>

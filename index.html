@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BazazLab | App Development Agency</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Prompt:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500;1,600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="nav-brand">
+                <svg class="brand-icon" id="brandIcon" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <circle cx="12" cy="3" r="3" fill="white" />
+                    <circle cx="19.8" cy="7.5" r="3" fill="white" />
+                    <circle cx="19.8" cy="16.5" r="3" fill="white" />
+                    <circle cx="12" cy="21" r="3" fill="white" />
+                    <circle cx="4.2" cy="16.5" r="3" fill="white" />
+                    <circle cx="4.2" cy="7.5" r="3" fill="white" />
+                </svg>
+                <span class="brand-bold">Bazaz</span> Lab
+            </a>
+            <ul class="nav-links">
+                <li><a href="#services">SERVICES</a></li>
+                <li><a href="#case-studies">CASE STUDIES</a></li>
+                <li><a href="#process">PROCESS</a></li>
+                <li><a href="#about">ABOUT</a></li>
+            </ul>
+            <div class="nav-actions">
+                <a href="#contact" class="cta-btn">CONTACT</a>
+            </div>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    We build mobile apps<br>
+                    that make your <span class="italic-accent">business</span><br>
+                    <span class="highlight-text">impossible to ignore.</span>
+                </h1>
+            </div>
+            <div class="hero-visual">
+                <object id="heroIllustration" type="image/svg+xml" data="/assets/illustration.svg"
+                    class="hero-illustration">
+                    App Development Illustration
+                </object>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <div class="section-header-left">
+                <span class="section-tag">— WHAT WE ACTUALLY DO</span>
+            </div>
+            <div class="services-accordion">
+                <div class="service-panel active" data-color="yellow">
+                    <div class="panel-collapsed">
+                        <span class="panel-label">iOS</span>
+                        <div class="panel-icon-small">
+                            <i class="fab fa-apple"></i>
+                        </div>
+                    </div>
+                    <div class="panel-expanded">
+                        <span class="panel-number">01</span>
+                        <div class="panel-icon">
+                            <i class="fab fa-apple"></i>
+                        </div>
+                        <h3 class="panel-title">iOS DEVELOPMENT</h3>
+                        <div class="panel-divider"></div>
+                        <p class="panel-description">We craft stunning native iOS applications using Swift and SwiftUI,
+                            delivering seamless experiences optimized for the Apple ecosystem with App Store deployment.
+                        </p>
+                        <div class="panel-link">
+                            <span>↗</span> iOS DEV
+                        </div>
+                    </div>
+                </div>
+                <div class="service-panel" data-color="orange">
+                    <div class="panel-collapsed">
+                        <span class="panel-label">ANDROID</span>
+                        <div class="panel-icon-small">
+                            <i class="fab fa-android"></i>
+                        </div>
+                    </div>
+                    <div class="panel-expanded">
+                        <span class="panel-number">02</span>
+                        <div class="panel-icon">
+                            <i class="fab fa-android"></i>
+                        </div>
+                        <h3 class="panel-title">ANDROID DEVELOPMENT</h3>
+                        <div class="panel-divider"></div>
+                        <p class="panel-description">Native Android applications built with Kotlin and Jetpack Compose,
+                            ensuring optimal performance and seamless Play Store integration.</p>
+                        <div class="panel-link">
+                            <span>↗</span> ANDROID DEV
+                        </div>
+                    </div>
+                </div>
+                <div class="service-panel" data-color="pink">
+                    <div class="panel-collapsed">
+                        <span class="panel-label">CROSS-PLATFORM</span>
+                        <div class="panel-icon-small">
+                            <i class="fab fa-react"></i>
+                        </div>
+                    </div>
+                    <div class="panel-expanded">
+                        <span class="panel-number">03</span>
+                        <div class="panel-icon">
+                            <i class="fab fa-react"></i>
+                        </div>
+                        <h3 class="panel-title">CROSS-PLATFORM</h3>
+                        <div class="panel-divider"></div>
+                        <p class="panel-description">React Native and Flutter applications that run beautifully on both
+                            iOS and Android from a single codebase, reducing time-to-market.</p>
+                        <div class="panel-link">
+                            <span>↗</span> CROSS-PLATFORM
+                        </div>
+                    </div>
+                </div>
+                <div class="service-panel" data-color="purple">
+                    <div class="panel-collapsed">
+                        <span class="panel-label">BACKEND</span>
+                        <div class="panel-icon-small">
+                            <i class="fas fa-server"></i>
+                        </div>
+                    </div>
+                    <div class="panel-expanded">
+                        <span class="panel-number">04</span>
+                        <div class="panel-icon">
+                            <i class="fas fa-server"></i>
+                        </div>
+                        <h3 class="panel-title">BACKEND & APIs</h3>
+                        <div class="panel-divider"></div>
+                        <p class="panel-description">Scalable backend solutions with Node.js, Firebase, and AWS that
+                            power your mobile applications with robust APIs and cloud infrastructure.</p>
+                        <div class="panel-link">
+                            <span>↗</span> BACKEND
+                        </div>
+                    </div>
+                </div>
+                <div class="service-panel" data-color="mint">
+                    <div class="panel-collapsed">
+                        <span class="panel-label">UI/UX</span>
+                        <div class="panel-icon-small">
+                            <i class="fas fa-palette"></i>
+                        </div>
+                    </div>
+                    <div class="panel-expanded">
+                        <span class="panel-number">05</span>
+                        <div class="panel-icon">
+                            <i class="fas fa-palette"></i>
+                        </div>
+                        <h3 class="panel-title">UI/UX DESIGN</h3>
+                        <div class="panel-divider"></div>
+                        <p class="panel-description">User-centered design that creates intuitive, beautiful interfaces.
+                            From wireframes to polished designs that delight your users.</p>
+                        <div class="panel-link">
+                            <span>↗</span> UI/UX
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section id="process" class="process">
+        <div class="container">
+            <div class="section-header-left">
+                <span class="section-tag">— HOW WE WORK</span>
+            </div>
+            <div class="process-accordion">
+                <div class="process-panel active" data-color="blue">
+                    <div class="panel-collapsed">
+                        <span class="panel-label">DISCOVERY</span>
+                        <div class="panel-icon-small">
+                            <i class="fas fa-search"></i>
+                        </div>
+                    </div>
+                    <div class="panel-expanded">
+                        <span class="panel-number">01</span>
+                        <div class="panel-icon">
+                            <i class="fas fa-search"></i>
+                        </div>
+                        <h3 class="panel-title">DISCOVERY</h3>
+                        <div class="panel-divider"></div>
+                        <p class="panel-description">We dive deep into your vision, goals, and target audience.
+                            Understanding your business needs and user expectations to create a solid foundation for
+                            your app.</p>
+                        <div class="panel-link">
+                            <span>↗</span> DISCOVERY
+                        </div>
+                    </div>
+                </div>
+                <div class="process-panel" data-color="teal">
+                    <div class="panel-collapsed">
+                        <span class="panel-label">DESIGN</span>
+                        <div class="panel-icon-small">
+                            <i class="fas fa-pen-nib"></i>
+                        </div>
+                    </div>
+                    <div class="panel-expanded">
+                        <span class="panel-number">02</span>
+                        <div class="panel-icon">
+                            <i class="fas fa-pen-nib"></i>
+                        </div>
+                        <h3 class="panel-title">DESIGN</h3>
+                        <div class="panel-divider"></div>
+                        <p class="panel-description">Creating stunning UI/UX designs that are both beautiful and
+                            intuitive. From wireframes to high-fidelity prototypes that bring your vision to life.</p>
+                        <div class="panel-link">
+                            <span>↗</span> DESIGN
+                        </div>
+                    </div>
+                </div>
+                <div class="process-panel" data-color="indigo">
+                    <div class="panel-collapsed">
+                        <span class="panel-label">DEVELOPMENT</span>
+                        <div class="panel-icon-small">
+                            <i class="fas fa-code"></i>
+                        </div>
+                    </div>
+                    <div class="panel-expanded">
+                        <span class="panel-number">03</span>
+                        <div class="panel-icon">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <h3 class="panel-title">DEVELOPMENT</h3>
+                        <div class="panel-divider"></div>
+                        <p class="panel-description">Building your app with clean, scalable code using the latest
+                            technologies. Agile sprints with regular updates keep you in the loop throughout.</p>
+                        <div class="panel-link">
+                            <span>↗</span> DEVELOPMENT
+                        </div>
+                    </div>
+                </div>
+                <div class="process-panel" data-color="coral">
+                    <div class="panel-collapsed">
+                        <span class="panel-label">LAUNCH</span>
+                        <div class="panel-icon-small">
+                            <i class="fas fa-rocket"></i>
+                        </div>
+                    </div>
+                    <div class="panel-expanded">
+                        <span class="panel-number">04</span>
+                        <div class="panel-icon">
+                            <i class="fas fa-rocket"></i>
+                        </div>
+                        <h3 class="panel-title">LAUNCH</h3>
+                        <div class="panel-divider"></div>
+                        <p class="panel-description">Deploying to app stores with full optimization. We handle
+                            submissions, ensure compliance, and provide ongoing support post-launch.</p>
+                        <div class="panel-link">
+                            <span>↗</span> LAUNCH
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Case Studies Section -->
+    <section id="case-studies" class="case-studies">
+        <div class="container">
+            <div class="section-header-left">
+                <span class="section-tag">— OUR WORK</span>
+                <h2 class="section-title-left">Case Studies</h2>
+            </div>
+            <div class="case-single">
+                <a href="/case-studies/lexiwork.html" class="case-card">
+                    <div class="case-image" style="background: none; overflow: hidden;">
+                        <img src="/assets/lexiwork.png" alt="LexiWork App Screenshot"
+                            style="width: 100%; height: 100%; object-fit: cover; object-position: center; display: block;">
+                    </div>
+                    <div class="case-content">
+                        <span class="case-category">Android App</span>
+                        <h3>LexiWork</h3>
+                        <p>AI-Powered Professional English Learning platform for Indian professionals.</p>
+                        <span class="case-link">View Case Study →</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonial Section (Single) -->
+    <section id="testimonials" class="testimonials">
+        <div class="container">
+            <span class="section-tag">— CLIENT LOVE</span>
+            <h2 class="section-title-left">What Our Client Says</h2>
+            <div class="testimonial-single">
+                <div class="testimonial-card featured">
+                    <div class="testimonial-quote">
+                        <div class="quote-bars">
+                            <span class="quote-bar"></span>
+                            <span class="quote-bar"></span>
+                        </div>
+                    </div>
+                    <p class="testimonial-text">They are a brilliant element... not just in terms of competence, but
+                        also from a human point of view.</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <img src="/assets/mailierantoine.jpeg" alt="Mailier Antoine">
+                        </div>
+                        <div class="author-info">
+                            <h4>Mailier Antoine</h4>
+                            <span>R&D, Bloxynergy BV, Belgium</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <span class="section-tag">ABOUT US</span>
+            <h2 class="section-title-left">We build mobile apps that make your business impossible to ignore.</h2>
+            <div class="about-content-text">
+                <p>Your competitors aren't always better than you. Sometimes they're just easier to reach.</p>
+                <p>We built Bazaz Lab to fix that. We're a small, focused agency that builds mobile apps with AI
+                    integration and actually gives a damn about what happens after we ship. Every app is custom built
+                    and delivered in 6-8 weeks.</p>
+                <p>No ghost acts mid-project. No passing you between account managers. You talk to the person actually
+                    building your app, start to finish.</p>
+                <p>If that sounds like what you've been looking for, let's talk.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tech Stack Section -->
+    <section class="tech-stack">
+        <div class="container">
+            <span class="section-tag">— OUR STACK</span>
+            <h2 class="section-title-left">Technologies We Use</h2>
+            <div class="tech-marquee">
+                <div class="tech-track">
+                    <span class="tech-item"><i class="devicon-swift-plain"></i> Swift</span>
+                    <span class="tech-item"><i class="devicon-kotlin-plain"></i> Kotlin</span>
+                    <span class="tech-item"><i class="devicon-react-original"></i> React Native</span>
+                    <span class="tech-item"><i class="devicon-flutter-plain"></i> Flutter</span>
+                    <span class="tech-item"><i class="devicon-firebase-plain"></i> Firebase</span>
+                    <span class="tech-item"><i class="devicon-nodejs-plain"></i> Node.js</span>
+                    <span class="tech-item"><i class="fa-brands fa-aws"></i> AWS</span>
+                    <span class="tech-item"><i class="devicon-typescript-plain"></i> TypeScript</span>
+                    <span class="tech-item"><i class="devicon-graphql-plain"></i> GraphQL</span>
+                    <span class="tech-item"><i class="devicon-mongodb-plain"></i> MongoDB</span>
+                    <span class="tech-item"><i class="devicon-swift-plain"></i> Swift</span>
+                    <span class="tech-item"><i class="devicon-kotlin-plain"></i> Kotlin</span>
+                    <span class="tech-item"><i class="devicon-react-original"></i> React Native</span>
+                    <span class="tech-item"><i class="devicon-flutter-plain"></i> Flutter</span>
+                    <span class="tech-item"><i class="devicon-firebase-plain"></i> Firebase</span>
+                    <span class="tech-item"><i class="devicon-nodejs-plain"></i> Node.js</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <span class="section-tag">— GET IN TOUCH</span>
+            <h2 class="section-title-left">Let's Build Your App</h2>
+            <div class="contact-wrapper">
+                <div class="contact-info">
+                    <p>Ready to bring your app idea to life? We'd love to hear from you.</p>
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>rahul@bazazlab.com</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Sec 14 Dwarka, New Delhi, India</span>
+                        </div>
+                    </div>
+                    <div class="contact-map">
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d14019.041853857498!2d77.03200565!3d28.5820669!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sin!4v1699999999999!5m2!1sen!2sin"
+                            width="100%" height="150" style="border:0; border-radius: 12px;" allowfullscreen=""
+                            loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+                        </iframe>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" class="social-link" aria-label="Twitter">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="social-link" aria-label="LinkedIn">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+                <form class="contact-form" id="contactForm">
+                    <input type="hidden" name="_subject" value="New Contact from BazazLab Website">
+                    <input type="hidden" name="_captcha" value="false">
+                    <div class="form-group">
+                        <input type="text" name="name" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" name="email" placeholder="Your Email" required>
+                    </div>
+                    <div class="form-group">
+                        <select name="app_type" required>
+                            <option value="" disabled selected>App Type</option>
+                            <option value="ios">iOS App</option>
+                            <option value="android">Android App</option>
+                            <option value="cross">Cross-Platform App</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <textarea name="message" placeholder="Tell us about your app idea" rows="4" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-full" id="submitBtn">
+                        <span class="btn-text">Send Message</span>
+                        <span class="btn-loading"><i class="fas fa-spinner fa-spin"></i> Sending...</span>
+                    </button>
+                    <div class="form-success" style="display: none;">
+                        <i class="fas fa-check-circle"></i>
+                        <p>Submitted, we'll get back to you soon.</p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <p>Building apps that stand out.</p>
+                </div>
+                <div class="footer-links">
+                    <a href="#services" class="footer-link">Services</a>
+                    <a href="#case-studies" class="footer-link">Case Studies</a>
+                    <a href="#process" class="footer-link">Process</a>
+                    <a href="#about" class="footer-link">About</a>
+                    <a href="#contact" class="footer-link">Contact</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 BazazLab. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/js/main.js"></script>
+</body>
+
+</html>
