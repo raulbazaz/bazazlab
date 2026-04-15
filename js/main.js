@@ -139,25 +139,125 @@ style.textContent = `
 `;
 document.head.appendChild(style);
 
-// Services Accordion Hover
-const servicePanels = document.querySelectorAll('.service-panel');
+// Services Split Layout — hover to switch detail panel
+const serviceData = [
+    {
+        icon: '<i class="fab fa-apple"></i>',
+        title: 'iOS Development',
+        desc: 'We craft stunning native iOS applications using Swift and SwiftUI, delivering seamless experiences optimized for the Apple ecosystem with full App Store deployment support.',
+        tags: ['Swift', 'SwiftUI', 'Xcode', 'App Store']
+    },
+    {
+        icon: '<i class="fab fa-android"></i>',
+        title: 'Android Development',
+        desc: 'Native Android apps built with Kotlin and Jetpack Compose, ensuring top-tier performance and smooth Play Store integration for millions of users.',
+        tags: ['Kotlin', 'Jetpack Compose', 'Android Studio', 'Play Store']
+    },
+    {
+        icon: '<i class="fab fa-react"></i>',
+        title: 'Cross-Platform',
+        desc: 'React Native and Flutter applications that run beautifully on both iOS and Android from a single codebase — cutting your time-to-market in half.',
+        tags: ['React Native', 'Flutter', 'Dart', 'Expo']
+    },
+    {
+        icon: '<i class="fas fa-server"></i>',
+        title: 'Backend & APIs',
+        desc: 'Scalable, secure backend solutions with Node.js, Firebase, and AWS that power your mobile apps with robust REST/GraphQL APIs and cloud infrastructure.',
+        tags: ['Node.js', 'Firebase', 'AWS', 'GraphQL']
+    },
+    {
+        icon: '<i class="fas fa-palette"></i>',
+        title: 'UI/UX Design',
+        desc: 'User-centered design that creates intuitive, beautiful interfaces — from early wireframes to high-fidelity prototypes that genuinely delight your users.',
+        tags: ['Figma', 'Prototyping', 'User Research', 'Design Systems']
+    }
+];
 
-servicePanels.forEach(panel => {
-    panel.addEventListener('mouseenter', () => {
-        servicePanels.forEach(p => p.classList.remove('active'));
-        panel.classList.add('active');
-    });
+const serviceItems = document.querySelectorAll('.service-item');
+const svcDetailIcon  = document.getElementById('svcDetailIcon');
+const svcDetailTitle = document.getElementById('svcDetailTitle');
+const svcDetailDesc  = document.getElementById('svcDetailDesc');
+const svcDetailTags  = document.getElementById('svcDetailTags');
+const svcDetailInner = document.querySelector('.svc-detail-inner');
+
+function activateService(index) {
+    serviceItems.forEach(i => i.classList.remove('active'));
+    serviceItems[index].classList.add('active');
+
+    const data = serviceData[index];
+    // Trigger re-animation
+    if (svcDetailInner) {
+        svcDetailInner.style.animation = 'none';
+        svcDetailInner.offsetHeight; // reflow
+        svcDetailInner.style.animation = '';
+    }
+    if (svcDetailIcon)  svcDetailIcon.innerHTML  = data.icon;
+    if (svcDetailTitle) svcDetailTitle.textContent = data.title;
+    if (svcDetailDesc)  svcDetailDesc.textContent  = data.desc;
+    if (svcDetailTags)  svcDetailTags.innerHTML    = data.tags.map(t => `<span>${t}</span>`).join('');
+}
+
+serviceItems.forEach((item, idx) => {
+    item.addEventListener('mouseenter', () => activateService(idx));
+    item.addEventListener('click', () => activateService(idx));
 });
 
-// Process Accordion Hover
-const processPanels = document.querySelectorAll('.process-panel');
+// Process Split Layout — hover to switch detail panel
+const processData = [
+    {
+        icon: '<i class="fas fa-search"></i>',
+        title: 'Discovery',
+        desc: 'We dive deep into your vision, goals, and target audience — understanding your business needs and user expectations to create a rock-solid foundation for your app.',
+        tags: ['Stakeholder Interviews', 'Market Research', 'UX Audit']
+    },
+    {
+        icon: '<i class="fas fa-pen-nib"></i>',
+        title: 'Design',
+        desc: 'Creating stunning UI/UX designs that are both beautiful and intuitive — from wireframes to pixel-perfect, high-fidelity prototypes that bring your vision to life.',
+        tags: ['Wireframing', 'UI Design', 'Figma', 'Prototyping']
+    },
+    {
+        icon: '<i class="fas fa-code"></i>',
+        title: 'Development',
+        desc: 'Building your app with clean, scalable code using the latest technologies. Agile sprints with regular demos keep you fully in the loop throughout the build.',
+        tags: ['Agile Sprints', 'Code Reviews', 'CI/CD', 'Testing']
+    },
+    {
+        icon: '<i class="fas fa-rocket"></i>',
+        title: 'Launch',
+        desc: 'Deploying to the App Store and Play Store with full optimization. We handle submissions, ensure compliance, and provide ongoing support post-launch.',
+        tags: ['App Store', 'Play Store', 'ASO', 'Post-launch Support']
+    }
+];
 
-processPanels.forEach(panel => {
-    panel.addEventListener('mouseenter', () => {
-        processPanels.forEach(p => p.classList.remove('active'));
-        panel.classList.add('active');
-    });
+const processItems   = document.querySelectorAll('.process-item');
+const procDetailIcon  = document.getElementById('procDetailIcon');
+const procDetailTitle = document.getElementById('procDetailTitle');
+const procDetailDesc  = document.getElementById('procDetailDesc');
+const procDetailTags  = document.getElementById('procDetailTags');
+const procDetailInner = document.getElementById('procDetailInner');
+
+function activateProcess(index) {
+    processItems.forEach(i => i.classList.remove('active'));
+    processItems[index].classList.add('active');
+
+    const data = processData[index];
+    if (procDetailInner) {
+        procDetailInner.style.animation = 'none';
+        procDetailInner.offsetHeight;
+        procDetailInner.style.animation = '';
+    }
+    if (procDetailIcon)  procDetailIcon.innerHTML   = data.icon;
+    if (procDetailTitle) procDetailTitle.textContent = data.title;
+    if (procDetailDesc)  procDetailDesc.textContent  = data.desc;
+    if (procDetailTags)  procDetailTags.innerHTML    = data.tags.map(t => `<span>${t}</span>`).join('');
+}
+
+processItems.forEach((item, idx) => {
+    item.addEventListener('mouseenter', () => activateProcess(idx));
+    item.addEventListener('click', () => activateProcess(idx));
 });
+
 
 // Scroll-based gear rotation
 function initGearRotation() {

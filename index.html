@@ -72,110 +72,55 @@
             <div class="section-header-left">
                 <span class="section-tag">— WHAT WE ACTUALLY DO</span>
             </div>
-            <div class="services-accordion">
-                <div class="service-panel active" data-color="yellow">
-                    <div class="panel-collapsed">
-                        <span class="panel-label">iOS</span>
-                        <div class="panel-icon-small">
-                            <i class="fab fa-apple"></i>
+            <div class="services-split">
+                <!-- Left: Service List -->
+                <div class="services-list">
+                    <div class="service-item active" data-service="0" id="svc-0">
+                        <span class="svc-num">01</span>
+                        <div class="svc-main">
+                            <div class="svc-name-row"><h3 class="svc-name">iOS Development</h3><i class="fab fa-apple svc-row-icon"></i></div>
+                            <p class="svc-short">Swift &amp; SwiftUI native apps</p>
                         </div>
                     </div>
-                    <div class="panel-expanded">
-                        <span class="panel-number">01</span>
-                        <div class="panel-icon">
-                            <i class="fab fa-apple"></i>
-                        </div>
-                        <h3 class="panel-title">iOS DEVELOPMENT</h3>
-                        <div class="panel-divider"></div>
-                        <p class="panel-description">We craft stunning native iOS applications using Swift and SwiftUI,
-                            delivering seamless experiences optimized for the Apple ecosystem with App Store deployment.
-                        </p>
-                        <div class="panel-link">
-                            <span>↗</span> iOS DEV
+                    <div class="service-item" data-service="1" id="svc-1">
+                        <span class="svc-num">02</span>
+                        <div class="svc-main">
+                            <div class="svc-name-row"><h3 class="svc-name">Android Development</h3><i class="fab fa-android svc-row-icon"></i></div>
+                            <p class="svc-short">Kotlin &amp; Jetpack Compose</p>
                         </div>
                     </div>
-                </div>
-                <div class="service-panel" data-color="orange">
-                    <div class="panel-collapsed">
-                        <span class="panel-label">ANDROID</span>
-                        <div class="panel-icon-small">
-                            <i class="fab fa-android"></i>
+                    <div class="service-item" data-service="2" id="svc-2">
+                        <span class="svc-num">03</span>
+                        <div class="svc-main">
+                            <div class="svc-name-row"><h3 class="svc-name">Cross-Platform</h3><i class="fab fa-react svc-row-icon"></i></div>
+                            <p class="svc-short">React Native &amp; Flutter</p>
                         </div>
                     </div>
-                    <div class="panel-expanded">
-                        <span class="panel-number">02</span>
-                        <div class="panel-icon">
-                            <i class="fab fa-android"></i>
+                    <div class="service-item" data-service="3" id="svc-3">
+                        <span class="svc-num">04</span>
+                        <div class="svc-main">
+                            <div class="svc-name-row"><h3 class="svc-name">Backend &amp; APIs</h3><i class="fas fa-server svc-row-icon"></i></div>
+                            <p class="svc-short">Node.js, Firebase &amp; AWS</p>
                         </div>
-                        <h3 class="panel-title">ANDROID DEVELOPMENT</h3>
-                        <div class="panel-divider"></div>
-                        <p class="panel-description">Native Android applications built with Kotlin and Jetpack Compose,
-                            ensuring optimal performance and seamless Play Store integration.</p>
-                        <div class="panel-link">
-                            <span>↗</span> ANDROID DEV
+                    </div>
+                    <div class="service-item" data-service="4" id="svc-4">
+                        <span class="svc-num">05</span>
+                        <div class="svc-main">
+                            <div class="svc-name-row"><h3 class="svc-name">UI/UX Design</h3><i class="fas fa-palette svc-row-icon"></i></div>
+                            <p class="svc-short">Wireframes to pixel-perfect UI</p>
                         </div>
                     </div>
                 </div>
-                <div class="service-panel" data-color="pink">
-                    <div class="panel-collapsed">
-                        <span class="panel-label">CROSS-PLATFORM</span>
-                        <div class="panel-icon-small">
-                            <i class="fab fa-react"></i>
+                <!-- Right: Detail Panel -->
+                <div class="services-detail" id="servicesDetail">
+                    <div class="svc-detail-inner">
+                        <div class="svc-detail-header">
+                            <div class="svc-detail-icon" id="svcDetailIcon"><i class="fab fa-apple"></i></div>
+                            <h2 class="svc-detail-title" id="svcDetailTitle">iOS Development</h2>
                         </div>
-                    </div>
-                    <div class="panel-expanded">
-                        <span class="panel-number">03</span>
-                        <div class="panel-icon">
-                            <i class="fab fa-react"></i>
-                        </div>
-                        <h3 class="panel-title">CROSS-PLATFORM</h3>
-                        <div class="panel-divider"></div>
-                        <p class="panel-description">React Native and Flutter applications that run beautifully on both
-                            iOS and Android from a single codebase, reducing time-to-market.</p>
-                        <div class="panel-link">
-                            <span>↗</span> CROSS-PLATFORM
-                        </div>
-                    </div>
-                </div>
-                <div class="service-panel" data-color="purple">
-                    <div class="panel-collapsed">
-                        <span class="panel-label">BACKEND</span>
-                        <div class="panel-icon-small">
-                            <i class="fas fa-server"></i>
-                        </div>
-                    </div>
-                    <div class="panel-expanded">
-                        <span class="panel-number">04</span>
-                        <div class="panel-icon">
-                            <i class="fas fa-server"></i>
-                        </div>
-                        <h3 class="panel-title">BACKEND & APIs</h3>
-                        <div class="panel-divider"></div>
-                        <p class="panel-description">Scalable backend solutions with Node.js, Firebase, and AWS that
-                            power your mobile applications with robust APIs and cloud infrastructure.</p>
-                        <div class="panel-link">
-                            <span>↗</span> BACKEND
-                        </div>
-                    </div>
-                </div>
-                <div class="service-panel" data-color="mint">
-                    <div class="panel-collapsed">
-                        <span class="panel-label">UI/UX</span>
-                        <div class="panel-icon-small">
-                            <i class="fas fa-palette"></i>
-                        </div>
-                    </div>
-                    <div class="panel-expanded">
-                        <span class="panel-number">05</span>
-                        <div class="panel-icon">
-                            <i class="fas fa-palette"></i>
-                        </div>
-                        <h3 class="panel-title">UI/UX DESIGN</h3>
-                        <div class="panel-divider"></div>
-                        <p class="panel-description">User-centered design that creates intuitive, beautiful interfaces.
-                            From wireframes to polished designs that delight your users.</p>
-                        <div class="panel-link">
-                            <span>↗</span> UI/UX
+                        <p class="svc-detail-desc" id="svcDetailDesc">We craft stunning native iOS applications using Swift and SwiftUI, delivering seamless experiences optimized for the Apple ecosystem with full App Store deployment support.</p>
+                        <div class="svc-detail-tags" id="svcDetailTags">
+                            <span>Swift</span><span>SwiftUI</span><span>Xcode</span><span>App Store</span>
                         </div>
                     </div>
                 </div>
@@ -189,89 +134,48 @@
             <div class="section-header-left">
                 <span class="section-tag">— HOW WE WORK</span>
             </div>
-            <div class="process-accordion">
-                <div class="process-panel active" data-color="blue">
-                    <div class="panel-collapsed">
-                        <span class="panel-label">DISCOVERY</span>
-                        <div class="panel-icon-small">
-                            <i class="fas fa-search"></i>
+            <div class="process-split">
+                <!-- Left: Process List -->
+                <div class="process-list">
+                    <div class="process-item active" data-process="0" id="proc-0">
+                        <span class="svc-num">01</span>
+                        <div class="svc-main">
+                            <div class="svc-name-row"><h3 class="svc-name">Discovery</h3><i class="fas fa-search svc-row-icon"></i></div>
+                            <p class="svc-short">Deep-dive into your vision &amp; goals</p>
                         </div>
                     </div>
-                    <div class="panel-expanded">
-                        <span class="panel-number">01</span>
-                        <div class="panel-icon">
-                            <i class="fas fa-search"></i>
-                        </div>
-                        <h3 class="panel-title">DISCOVERY</h3>
-                        <div class="panel-divider"></div>
-                        <p class="panel-description">We dive deep into your vision, goals, and target audience.
-                            Understanding your business needs and user expectations to create a solid foundation for
-                            your app.</p>
-                        <div class="panel-link">
-                            <span>↗</span> DISCOVERY
+                    <div class="process-item" data-process="1" id="proc-1">
+                        <span class="svc-num">02</span>
+                        <div class="svc-main">
+                            <div class="svc-name-row"><h3 class="svc-name">Design</h3><i class="fas fa-pen-nib svc-row-icon"></i></div>
+                            <p class="svc-short">Wireframes to high-fidelity prototypes</p>
                         </div>
                     </div>
-                </div>
-                <div class="process-panel" data-color="teal">
-                    <div class="panel-collapsed">
-                        <span class="panel-label">DESIGN</span>
-                        <div class="panel-icon-small">
-                            <i class="fas fa-pen-nib"></i>
+                    <div class="process-item" data-process="2" id="proc-2">
+                        <span class="svc-num">03</span>
+                        <div class="svc-main">
+                            <div class="svc-name-row"><h3 class="svc-name">Development</h3><i class="fas fa-code svc-row-icon"></i></div>
+                            <p class="svc-short">Agile sprints with regular updates</p>
                         </div>
                     </div>
-                    <div class="panel-expanded">
-                        <span class="panel-number">02</span>
-                        <div class="panel-icon">
-                            <i class="fas fa-pen-nib"></i>
-                        </div>
-                        <h3 class="panel-title">DESIGN</h3>
-                        <div class="panel-divider"></div>
-                        <p class="panel-description">Creating stunning UI/UX designs that are both beautiful and
-                            intuitive. From wireframes to high-fidelity prototypes that bring your vision to life.</p>
-                        <div class="panel-link">
-                            <span>↗</span> DESIGN
+                    <div class="process-item" data-process="3" id="proc-3">
+                        <span class="svc-num">04</span>
+                        <div class="svc-main">
+                            <div class="svc-name-row"><h3 class="svc-name">Launch</h3><i class="fas fa-rocket svc-row-icon"></i></div>
+                            <p class="svc-short">App store submission &amp; beyond</p>
                         </div>
                     </div>
                 </div>
-                <div class="process-panel" data-color="indigo">
-                    <div class="panel-collapsed">
-                        <span class="panel-label">DEVELOPMENT</span>
-                        <div class="panel-icon-small">
-                            <i class="fas fa-code"></i>
+                <!-- Right: Detail Panel -->
+                <div class="services-detail" id="processDetail">
+                    <div class="svc-detail-inner" id="procDetailInner">
+                        <div class="svc-detail-header">
+                            <div class="svc-detail-icon" id="procDetailIcon"><i class="fas fa-search"></i></div>
+                            <h2 class="svc-detail-title" id="procDetailTitle">Discovery</h2>
                         </div>
-                    </div>
-                    <div class="panel-expanded">
-                        <span class="panel-number">03</span>
-                        <div class="panel-icon">
-                            <i class="fas fa-code"></i>
-                        </div>
-                        <h3 class="panel-title">DEVELOPMENT</h3>
-                        <div class="panel-divider"></div>
-                        <p class="panel-description">Building your app with clean, scalable code using the latest
-                            technologies. Agile sprints with regular updates keep you in the loop throughout.</p>
-                        <div class="panel-link">
-                            <span>↗</span> DEVELOPMENT
-                        </div>
-                    </div>
-                </div>
-                <div class="process-panel" data-color="coral">
-                    <div class="panel-collapsed">
-                        <span class="panel-label">LAUNCH</span>
-                        <div class="panel-icon-small">
-                            <i class="fas fa-rocket"></i>
-                        </div>
-                    </div>
-                    <div class="panel-expanded">
-                        <span class="panel-number">04</span>
-                        <div class="panel-icon">
-                            <i class="fas fa-rocket"></i>
-                        </div>
-                        <h3 class="panel-title">LAUNCH</h3>
-                        <div class="panel-divider"></div>
-                        <p class="panel-description">Deploying to app stores with full optimization. We handle
-                            submissions, ensure compliance, and provide ongoing support post-launch.</p>
-                        <div class="panel-link">
-                            <span>↗</span> LAUNCH
+                        <p class="svc-detail-desc" id="procDetailDesc">We dive deep into your vision, goals, and target audience — understanding your business needs and user expectations to create a rock-solid foundation for your app.</p>
+                        <div class="svc-detail-tags" id="procDetailTags">
+                            <span>Stakeholder Interviews</span><span>Market Research</span><span>UX Audit</span>
                         </div>
                     </div>
                 </div>
