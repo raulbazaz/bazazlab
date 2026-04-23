@@ -22,34 +22,9 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// Smooth mouse wheel scrolling
-let isScrolling = false;
-let targetScroll = window.pageYOffset;
-
-window.addEventListener('wheel', (e) => {
-    e.preventDefault();
-
-    targetScroll += e.deltaY * 1.0; // Normal scroll speed
-    targetScroll = Math.max(0, Math.min(targetScroll, document.body.scrollHeight - window.innerHeight));
-
-    if (!isScrolling) {
-        isScrolling = true;
-        smoothScroll();
-    }
-}, { passive: false });
-
-function smoothScroll() {
-    const currentScroll = window.pageYOffset;
-    const diff = targetScroll - currentScroll;
-
-    if (Math.abs(diff) > 0.5) {
-        window.scrollTo(0, currentScroll + diff * 0.65); // Smoother easing
-        requestAnimationFrame(smoothScroll);
-    } else {
-        window.scrollTo(0, targetScroll);
-        isScrolling = false;
-    }
-}
+// Native smooth scrolling is handled by CSS scroll-behavior: smooth
+// Custom JS wheel hijacking removed — it caused scroll jank on Windows/non-Mac browsers
+// by blocking passive scroll optimizations in Chrome/Edge.
 
 // Navbar background change on scroll
 const navbar = document.querySelector('.navbar');
@@ -65,7 +40,7 @@ window.addEventListener('scroll', () => {
     }
 
     lastScroll = currentScroll;
-});
+}, { passive: true });
 
 // Contact Form Submission
 const contactForm = document.getElementById('contactForm');
@@ -259,44 +234,39 @@ processItems.forEach((item, idx) => {
 });
 
 
-// Scroll-based gear rotation
+// Scroll-based gear rotation — consolidated into a single throttled scroll listener
+// to avoid multiple scroll listeners fighting each other during rAF scheduling.
 function initGearRotation() {
     const heroIllustration = document.getElementById('heroIllustration');
     const brandIcon = document.getElementById('brandIcon');
+    let rafPending = false;
 
-    // Brand icon rotation
-    if (brandIcon) {
-        window.addEventListener('scroll', () => {
+    function onScroll() {
+        if (rafPending) return;
+        rafPending = true;
+        requestAnimationFrame(() => {
+            rafPending = false;
             const scrollY = window.pageYOffset;
-            const rotation = scrollY * 0.3;
-            brandIcon.style.transform = `rotate(${rotation}deg)`;
+
+            // Brand icon rotation
+            if (brandIcon) {
+                brandIcon.style.transform = `rotate(${scrollY * 0.3}deg)`;
+            }
+
+            // Hero illustration gears
+            if (heroIllustration && heroIllustration.contentDocument) {
+                const svgDoc = heroIllustration.contentDocument;
+                const gear1 = svgDoc.getElementById('gear1');
+                const gear2 = svgDoc.getElementById('gear2');
+                const gear3 = svgDoc.getElementById('gear3');
+                if (gear1) gear1.style.transform = `rotate(${scrollY * 0.3}deg)`;
+                if (gear2) gear2.style.transform = `rotate(${scrollY * -0.25}deg)`;
+                if (gear3) gear3.style.transform = `rotate(${scrollY * 0.35}deg)`;
+            }
         });
     }
 
-    // Hero illustration gears
-    if (heroIllustration) {
-        heroIllustration.addEventListener('load', () => {
-            const svgDoc = heroIllustration.contentDocument;
-            if (!svgDoc) return;
-
-            const gear1 = svgDoc.getElementById('gear1');
-            const gear2 = svgDoc.getElementById('gear2');
-            const gear3 = svgDoc.getElementById('gear3');
-
-            if (!gear1 || !gear2 || !gear3) return;
-
-            window.addEventListener('scroll', () => {
-                const scrollY = window.pageYOffset;
-                const rotation1 = scrollY * 0.3;
-                const rotation2 = scrollY * -0.25;
-                const rotation3 = scrollY * 0.35;
-
-                gear1.style.transform = `rotate(${rotation1}deg)`;
-                gear2.style.transform = `rotate(${rotation2}deg)`;
-                gear3.style.transform = `rotate(${rotation3}deg)`;
-            });
-        });
-    }
+    window.addEventListener('scroll', onScroll, { passive: true });
 }
 
 initGearRotation();
