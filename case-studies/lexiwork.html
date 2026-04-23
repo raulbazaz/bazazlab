@@ -627,10 +627,15 @@
         // Brand icon rotation on scroll
         const brandIcon = document.getElementById('brandIcon');
         if (brandIcon) {
+            let rafPending = false;
             window.addEventListener('scroll', () => {
-                const scrollY = window.pageYOffset;
-                brandIcon.style.transform = `rotate(${scrollY * 0.3}deg)`;
-            });
+                if (rafPending) return;
+                rafPending = true;
+                requestAnimationFrame(() => {
+                    rafPending = false;
+                    brandIcon.style.transform = `rotate(${window.pageYOffset * 0.3}deg)`;
+                });
+            }, { passive: true });
         }
 
         // Mobile Menu Toggle
@@ -654,31 +659,9 @@
             counter.textContent = `${currentSlide + 1} / ${total}`;
         }
 
-        // Smooth mouse wheel scrolling — matches main page feel
-        let isScrolling = false;
-        let targetScroll = window.pageYOffset;
-
-        window.addEventListener('wheel', (e) => {
-            e.preventDefault();
-            targetScroll += e.deltaY * 1.0;
-            targetScroll = Math.max(0, Math.min(targetScroll, document.body.scrollHeight - window.innerHeight));
-            if (!isScrolling) {
-                isScrolling = true;
-                smoothScroll();
-            }
-        }, { passive: false });
-
-        function smoothScroll() {
-            const currentScroll = window.pageYOffset;
-            const diff = targetScroll - currentScroll;
-            if (Math.abs(diff) > 0.5) {
-                window.scrollTo(0, currentScroll + diff * 0.65);
-                requestAnimationFrame(smoothScroll);
-            } else {
-                window.scrollTo(0, targetScroll);
-                isScrolling = false;
-            }
-        }
+        // Native smooth scrolling handled by CSS scroll-behavior: smooth
+        // Custom JS wheel hijacking removed — caused scroll jank on Windows/non-Mac browsers
+        // by blocking passive scroll optimizations in Chrome/Edge.
     </script>
 </body>
 </html>

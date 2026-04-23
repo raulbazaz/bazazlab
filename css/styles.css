@@ -1565,7 +1565,13 @@ section {
 
     .hero-visual {
         order: 2;
-        min-height: 400px;
+        min-height: 300px;
+        justify-content: center;
+    }
+
+    .hero-illustration {
+        margin-right: 0;
+        max-width: 420px;
     }
 
     .process-grid {
@@ -1625,6 +1631,19 @@ section {
 
     .hero-title {
         font-size: 48px;
+    }
+
+    .hero-visual {
+        min-height: 220px;
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .hero-illustration {
+        margin-right: 0;
+        max-width: 280px;
+        width: 100%;
     }
 
     .phone-mockup {
