@@ -2,7 +2,7 @@
 :root {
     --font-family: 'Prompt', sans-serif;
     --border-radius: 16px;
-    
+
     /* Dark Theme (Default) */
     --bg-primary: #000000;
     --bg-secondary: #0a0a0a;
@@ -66,7 +66,18 @@ body {
     cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cpath d='M5 2 L5 26 L11 20 L17 30 L21 28 L15 18 L24 18 Z' fill='%23f5a623' stroke='%23000' stroke-width='1.5'/%3E%3C/svg%3E") 5 2, auto;
 }
 
-a, button, .btn, .service-panel, .process-panel, .case-card, .testimonial-card, .tech-item, .social-link, input, select, textarea {
+a,
+button,
+.btn,
+.service-panel,
+.process-panel,
+.case-card,
+.testimonial-card,
+.tech-item,
+.social-link,
+input,
+select,
+textarea {
     cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cpath d='M5 2 L5 26 L11 20 L17 30 L21 28 L15 18 L24 18 Z' fill='%23ffffff' stroke='%23000' stroke-width='1.5'/%3E%3C/svg%3E") 5 2, pointer;
 }
 
@@ -88,7 +99,12 @@ img {
 }
 
 /* ===== Typography ===== */
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     font-weight: 600;
     line-height: 1.1;
 }
@@ -183,10 +199,21 @@ h1, h2, h3, h4, h5, h6 {
     height: 20px;
 }
 
-.sun-icon { display: none; }
-.moon-icon { display: flex; }
-[data-theme="light"] .sun-icon { display: flex; }
-[data-theme="light"] .moon-icon { display: none; }
+.sun-icon {
+    display: none;
+}
+
+.moon-icon {
+    display: flex;
+}
+
+[data-theme="light"] .sun-icon {
+    display: flex;
+}
+
+[data-theme="light"] .moon-icon {
+    display: none;
+}
 
 .cta-btn {
     background: var(--accent-color);
@@ -330,6 +357,7 @@ h1, h2, h3, h4, h5, h6 {
     0% {
         stroke-dashoffset: 0;
     }
+
     100% {
         stroke-dashoffset: -24;
     }
@@ -560,7 +588,7 @@ section {
     width: 240px;
     height: 240px;
     border-radius: 50%;
-    background: radial-gradient(circle, rgba(245,166,35,0.08) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(245, 166, 35, 0.08) 0%, transparent 70%);
     pointer-events: none;
 }
 
@@ -570,8 +598,15 @@ section {
 }
 
 @keyframes svcFadeIn {
-    from { opacity: 0; transform: translateY(12px); }
-    to   { opacity: 1; transform: translateY(0); }
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .svc-detail-header {
@@ -647,26 +682,31 @@ section {
     background: #fff;
     color: #000;
     transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(245,166,35,0.25);
+    box-shadow: 0 8px 24px rgba(245, 166, 35, 0.25);
 }
 
 /* ---- Responsive ---- */
 @media (max-width: 900px) {
+
     .services-split,
     .process-split {
         grid-template-columns: 1fr;
     }
+
     .services-list,
     .process-list {
         border-right: none;
     }
+
     .services-detail {
         display: none;
     }
+
     .service-item,
     .process-item {
         padding: 22px 24px;
     }
+
     .svc-name {
         font-size: 18px;
     }
@@ -776,6 +816,32 @@ section {
     margin: 0;
 }
 
+.case-grid-two {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 400px));
+    gap: 32px;
+    align-items: start;
+}
+
+@media (max-width: 900px) {
+    .case-grid-two {
+        grid-template-columns: 1fr;
+    }
+}
+
+.case-image--signalyze {
+    background: #060c14 !important;
+    padding: 0;
+}
+
+.signalyze-visual {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .cases-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
@@ -839,8 +905,15 @@ section {
 }
 
 @keyframes blink {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.3; }
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.3;
+    }
 }
 
 .case-content {
@@ -993,15 +1066,15 @@ section {
     .case-card-full {
         padding: 28px;
     }
-    
+
     .case-header h3 {
         font-size: 28px;
     }
-    
+
     .case-meta {
         gap: 24px;
     }
-    
+
     .features-grid {
         grid-template-columns: 1fr;
     }
@@ -1039,6 +1112,7 @@ section {
         opacity: 0;
         transform: translateY(30px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -1077,7 +1151,7 @@ section {
     .case-modal {
         padding: 20px 10px;
     }
-    
+
     .case-modal-body {
         padding: 28px;
     }
@@ -1142,9 +1216,13 @@ section {
 }
 
 @keyframes eyeBlink {
-    0%, 90%, 100% {
+
+    0%,
+    90%,
+    100% {
         transform: scaleY(1);
     }
+
     95% {
         transform: scaleY(0.1);
     }
@@ -1284,8 +1362,13 @@ section {
 }
 
 @keyframes marquee {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-50%);
+    }
 }
 
 .tech-item {
@@ -1301,12 +1384,29 @@ section {
     gap: 10px;
 }
 
-.tech-item:nth-child(6n+1) { background: #FF6F69; }
-.tech-item:nth-child(6n+2) { background: #FFCD52; }
-.tech-item:nth-child(6n+3) { background: #94D9B0; }
-.tech-item:nth-child(6n+4) { background: #8B9FDE; }
-.tech-item:nth-child(6n+5) { background: #FF9F7A; }
-.tech-item:nth-child(6n+6) { background: #C4A6E8; }
+.tech-item:nth-child(6n+1) {
+    background: #FF6F69;
+}
+
+.tech-item:nth-child(6n+2) {
+    background: #FFCD52;
+}
+
+.tech-item:nth-child(6n+3) {
+    background: #94D9B0;
+}
+
+.tech-item:nth-child(6n+4) {
+    background: #8B9FDE;
+}
+
+.tech-item:nth-child(6n+5) {
+    background: #FF9F7A;
+}
+
+.tech-item:nth-child(6n+6) {
+    background: #C4A6E8;
+}
 
 .tech-item i {
     font-size: 18px;
@@ -1314,7 +1414,7 @@ section {
 
 .tech-item:hover {
     transform: translateY(-3px);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
 }
 
 /* ===== Contact Section ===== */
@@ -1336,7 +1436,7 @@ section {
     margin-top: 40px;
 }
 
-.contact-info > p {
+.contact-info>p {
     color: var(--text-secondary);
     margin-bottom: 32px;
     font-size: 16px;
@@ -1585,7 +1685,7 @@ section {
 
     .contact-info .section-tag,
     .contact-info .section-title,
-    .contact-info > p {
+    .contact-info>p {
         text-align: center;
     }
 

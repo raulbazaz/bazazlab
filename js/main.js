@@ -149,10 +149,10 @@ const serviceData = [
 ];
 
 const serviceItems = document.querySelectorAll('.service-item');
-const svcDetailIcon  = document.getElementById('svcDetailIcon');
+const svcDetailIcon = document.getElementById('svcDetailIcon');
 const svcDetailTitle = document.getElementById('svcDetailTitle');
-const svcDetailDesc  = document.getElementById('svcDetailDesc');
-const svcDetailTags  = document.getElementById('svcDetailTags');
+const svcDetailDesc = document.getElementById('svcDetailDesc');
+const svcDetailTags = document.getElementById('svcDetailTags');
 const svcDetailInner = document.querySelector('.svc-detail-inner');
 
 function activateService(index) {
@@ -166,10 +166,10 @@ function activateService(index) {
         svcDetailInner.offsetHeight; // reflow
         svcDetailInner.style.animation = '';
     }
-    if (svcDetailIcon)  svcDetailIcon.innerHTML  = data.icon;
+    if (svcDetailIcon) svcDetailIcon.innerHTML = data.icon;
     if (svcDetailTitle) svcDetailTitle.textContent = data.title;
-    if (svcDetailDesc)  svcDetailDesc.textContent  = data.desc;
-    if (svcDetailTags)  svcDetailTags.innerHTML    = data.tags.map(t => `<span>${t}</span>`).join('');
+    if (svcDetailDesc) svcDetailDesc.textContent = data.desc;
+    if (svcDetailTags) svcDetailTags.innerHTML = data.tags.map(t => `<span>${t}</span>`).join('');
 }
 
 serviceItems.forEach((item, idx) => {
@@ -205,11 +205,11 @@ const processData = [
     }
 ];
 
-const processItems   = document.querySelectorAll('.process-item');
-const procDetailIcon  = document.getElementById('procDetailIcon');
+const processItems = document.querySelectorAll('.process-item');
+const procDetailIcon = document.getElementById('procDetailIcon');
 const procDetailTitle = document.getElementById('procDetailTitle');
-const procDetailDesc  = document.getElementById('procDetailDesc');
-const procDetailTags  = document.getElementById('procDetailTags');
+const procDetailDesc = document.getElementById('procDetailDesc');
+const procDetailTags = document.getElementById('procDetailTags');
 const procDetailInner = document.getElementById('procDetailInner');
 
 function activateProcess(index) {
@@ -222,10 +222,10 @@ function activateProcess(index) {
         procDetailInner.offsetHeight;
         procDetailInner.style.animation = '';
     }
-    if (procDetailIcon)  procDetailIcon.innerHTML   = data.icon;
+    if (procDetailIcon) procDetailIcon.innerHTML = data.icon;
     if (procDetailTitle) procDetailTitle.textContent = data.title;
-    if (procDetailDesc)  procDetailDesc.textContent  = data.desc;
-    if (procDetailTags)  procDetailTags.innerHTML    = data.tags.map(t => `<span>${t}</span>`).join('');
+    if (procDetailDesc) procDetailDesc.textContent = data.desc;
+    if (procDetailTags) procDetailTags.innerHTML = data.tags.map(t => `<span>${t}</span>`).join('');
 }
 
 processItems.forEach((item, idx) => {

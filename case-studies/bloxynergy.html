@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bloxynergy BV | Bazaz Lab</title>
+    <meta name="description" content="How Bazaz Lab built a Flutter-based DSP signal analysis app with FFT algorithms and ML-powered binary data classification using TensorFlow and scikit-learn.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/css/styles.css">
+    <style>
+        .case-study-page {
+            padding-top: 100px;
+            min-height: 100vh;
+        }
+
+        .case-study-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px 60px;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-secondary);
+            font-size: 14px;
+            margin-bottom: 40px;
+            transition: color 0.3s ease;
+        }
+
+        .back-link:hover {
+            color: var(--accent-color);
+        }
+
+        /* Single-column layout */
+        .case-study-layout {
+            display: block;
+            max-width: 780px;
+        }
+
+        .case-study-content {
+            min-width: 0;
+        }
+
+        /* Header */
+        .case-study-header {
+            margin-bottom: 20px;
+        }
+
+        .case-study-header .case-category {
+            font-size: 12px;
+            color: var(--accent-color);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 600;
+        }
+
+        .case-study-header h1 {
+            font-size: clamp(36px, 5vw, 52px);
+            margin: 10px 0 6px;
+            letter-spacing: -2px;
+        }
+
+        .case-study-header .subtitle {
+            font-size: 18px;
+            color: var(--text-secondary);
+        }
+
+        /* Meta bar */
+        .case-study-meta {
+            display: flex;
+            gap: 32px;
+            padding: 12px 0;
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+        }
+
+        .meta-item {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .meta-label {
+            font-size: 11px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+
+        .meta-value {
+            font-size: 15px;
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+
+        /* Sections */
+        .case-study-section {
+            margin-bottom: 20px;
+            padding: 0;
+        }
+
+        .case-study-section h2 {
+            font-size: 20px;
+            color: var(--accent-color);
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .case-study-section p {
+            color: var(--text-primary);
+            font-size: 15px;
+            line-height: 1.75;
+        }
+
+        /* Features grid */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+            margin-top: 12px;
+        }
+
+        .feature-item {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            padding: 18px;
+            border-radius: 12px;
+        }
+
+        .feature-item strong {
+            display: block;
+            margin-bottom: 6px;
+            color: var(--text-primary);
+            font-size: 14px;
+        }
+
+        .feature-item p {
+            font-size: 13px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        /* Tech tags */
+        .case-study-tech {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            padding-top: 24px;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .tech-tag {
+            padding: 8px 16px;
+            background: var(--accent-color);
+            color: #1a1a1a;
+            font-size: 13px;
+            font-weight: 600;
+            border-radius: 10px;
+        }
+
+        /* Phone frame */
+        .android-mockup {
+            display: flex;
+            justify-content: center;
+        }
+
+        .phone-frame {
+            width: 240px;
+            height: 500px;
+            background: #0d0d12;
+            border-radius: 38px;
+            border: 3px solid #1e1e2a;
+            box-shadow:
+                0 0 0 1px #111118,
+                0 32px 80px rgba(0, 0, 0, 0.7),
+                inset 0 0 0 2px #111118,
+                0 0 40px rgba(0, 200, 150, 0.06);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .phone-notch {
+            width: 80px;
+            height: 20px;
+            background: #0d0d12;
+            border-radius: 0 0 14px 14px;
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+        }
+
+        /* DSP App Screen */
+        .phone-screen {
+            width: 100%;
+            flex: 1;
+            background: #080c12;
+            overflow: hidden;
+            padding: 28px 12px 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        /* App top bar */
+        .dsp-topbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .dsp-app-name {
+            font-size: 13px;
+            font-weight: 700;
+            color: #00e5a0;
+            letter-spacing: 0.5px;
+        }
+
+        .dsp-status-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: #00e5a0;
+            animation: pulse-green 1.8s ease-in-out infinite;
+        }
+
+        @keyframes pulse-green {
+            0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(0, 229, 160, 0.4); }
+            50% { opacity: 0.7; box-shadow: 0 0 0 4px rgba(0, 229, 160, 0); }
+        }
+
+        /* Signal source label */
+        .dsp-source-label {
+            font-size: 8px;
+            color: #3a4a5a;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* FFT waveform display */
+        .dsp-fft-panel {
+            background: #0b1320;
+            border: 1px solid #1a2535;
+            border-radius: 8px;
+            padding: 8px;
+            position: relative;
+        }
+
+        .dsp-panel-label {
+            font-size: 7px;
+            color: #3a6a5a;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 4px;
+        }
+
+        .fft-canvas {
+            width: 100%;
+            height: 50px;
+            display: flex;
+            align-items: flex-end;
+            gap: 2px;
+            overflow: hidden;
+        }
+
+        .fft-bar {
+            flex: 1;
+            border-radius: 2px 2px 0 0;
+            background: linear-gradient(180deg, #00e5a0, #00a070);
+            animation: fft-animate var(--dur, 1s) ease-in-out infinite alternate;
+            transform-origin: bottom;
+        }
+
+        @keyframes fft-animate {
+            from { height: var(--h-low); opacity: 0.6; }
+            to   { height: var(--h-high); opacity: 1; }
+        }
+
+        /* Binary data stream */
+        .dsp-binary-panel {
+            background: #080e18;
+            border: 1px solid #1a2535;
+            border-radius: 8px;
+            padding: 6px 8px;
+        }
+
+        .binary-stream {
+            font-family: 'Courier New', monospace;
+            font-size: 7px;
+            color: #1a7a50;
+            line-height: 1.6;
+            word-break: break-all;
+            letter-spacing: 1px;
+        }
+
+        .binary-highlight {
+            color: #00e5a0;
+            font-weight: 700;
+        }
+
+        /* ML classification result */
+        .dsp-ml-panel {
+            background: #0b1320;
+            border: 1px solid #1a2535;
+            border-radius: 8px;
+            padding: 6px 8px;
+        }
+
+        .ml-result-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 5px;
+        }
+
+        .ml-class-name {
+            font-size: 8px;
+            color: #8aaabb;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .ml-confidence {
+            font-size: 8px;
+            font-weight: 700;
+            color: #00e5a0;
+        }
+
+        .ml-bar-wrap {
+            width: 100%;
+            height: 4px;
+            background: #111c28;
+            border-radius: 2px;
+            overflow: hidden;
+        }
+
+        .ml-bar-fill {
+            height: 100%;
+            border-radius: 2px;
+            background: linear-gradient(90deg, #00a070, #00e5a0);
+            animation: ml-fill var(--fill-dur, 2s) ease-out forwards;
+        }
+
+        @keyframes ml-fill {
+            from { width: 0%; }
+            to   { width: var(--fill-w); }
+        }
+
+        /* Stats row */
+        .dsp-stats-row {
+            display: flex;
+            gap: 5px;
+        }
+
+        .dsp-stat-chip {
+            flex: 1;
+            background: #0b1320;
+            border: 1px solid #1a2535;
+            border-radius: 6px;
+            padding: 5px 4px;
+            text-align: center;
+        }
+
+        .dsp-stat-value {
+            font-size: 10px;
+            font-weight: 700;
+            color: #00e5a0;
+            display: block;
+        }
+
+        .dsp-stat-key {
+            font-size: 6px;
+            color: #3a4a5a;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Home bar */
+        .phone-home-bar {
+            height: 22px;
+            background: #0d0d12;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .phone-home-bar::after {
+            content: '';
+            width: 55px;
+            height: 4px;
+            background: #1e1e2a;
+            border-radius: 2px;
+        }
+
+        /* Mockup nav */
+        .mockup-nav {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 14px;
+            margin-top: 16px;
+        }
+
+        .mockup-caption {
+            font-size: 11px;
+            color: var(--text-muted);
+            text-align: center;
+            margin-top: 10px;
+            line-height: 1.5;
+            max-width: 220px;
+        }
+
+        @media (max-width: 900px) {
+            .case-study-layout {
+                grid-template-columns: 1fr;
+            }
+            .case-study-mockup-col {
+                position: static;
+                order: -1;
+            }
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="/" class="nav-brand">
+                <svg class="brand-icon" id="brandIcon" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <circle cx="12" cy="3" r="3" fill="white"/>
+                    <circle cx="19.8" cy="7.5" r="3" fill="white"/>
+                    <circle cx="19.8" cy="16.5" r="3" fill="white"/>
+                    <circle cx="12" cy="21" r="3" fill="white"/>
+                    <circle cx="4.2" cy="16.5" r="3" fill="white"/>
+                    <circle cx="4.2" cy="7.5" r="3" fill="white"/>
+                </svg>
+                <span class="brand-bold">Bazaz</span> Lab
+            </a>
+            <ul class="nav-links">
+                <li><a href="/#services">SERVICES</a></li>
+                <li><a href="/#case-studies">CASE STUDIES</a></li>
+                <li><a href="/#process">PROCESS</a></li>
+                <li><a href="/#about">ABOUT</a></li>
+            </ul>
+            <div class="nav-actions">
+                <a href="/#contact" class="cta-btn">CONTACT</a>
+            </div>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <main class="case-study-page">
+        <div class="case-study-container">
+            <div class="case-study-layout">
+
+                <!-- LEFT: Content -->
+                <div class="case-study-content">
+                    <header class="case-study-header">
+                        <span class="case-category">DSP + Machine Learning App</span>
+                        <h1>Bloxynergy BV</h1>
+                        <p class="subtitle">On-Device ML Classification of Binary Data from Embedded Hardware</p>
+                    </header>
+
+                    <div class="case-study-meta">
+                        <div class="meta-item">
+                            <span class="meta-label">Platform</span>
+                            <span class="meta-value">Flutter (iOS + Android)</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Domain</span>
+                            <span class="meta-value">DSP / Embedded Systems</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Timeline</span>
+                            <span class="meta-value">10 weeks</span>
+                        </div>
+                    </div>
+
+                    <section class="case-study-section">
+                        <h2>The Challenge</h2>
+                        <p>The client operated hardware devices that continuously streamed raw binary and digital signal data from embedded sensors. Engineers needed a mobile tool to capture that stream in real time, run frequency-domain analysis, and automatically classify signal patterns without sending data to a remote server. Existing desktop tools were too heavyweight for field use, and off-the-shelf apps lacked the custom FFT pipeline and ML inference layer the project demanded.</p>
+                    </section>
+
+                    <section class="case-study-section">
+                        <h2>The Solution</h2>
+                        <p>Bazaz Lab designed and built a Flutter application for Bloxynergy BV that ingests binary data frames from the device, applies custom Fast Fourier Transform algorithms to convert time-domain signals into frequency spectra, and feeds the resulting feature vectors into an on-device machine learning model for real-time classification. A Python backend handles model training and data preprocessing, while Firebase powers live session storage and user authentication. The result is a portable, self-contained analysis suite that works entirely offline in the field.</p>
+                    </section>
+
+                    <section class="case-study-section">
+                        <h2>Key Features Delivered</h2>
+                        <div class="features-grid">
+                            <div class="feature-item">
+                                <strong>Custom FFT Engine</strong>
+                                <p>Hand-tuned Cooley-Tukey FFT algorithm optimized for the device's specific sample rates, with windowing functions (Hann, Hamming, Blackman) selectable per signal type.</p>
+                            </div>
+                            <div class="feature-item">
+                                <strong>Binary Data Parser</strong>
+                                <p>Byte-level frame parser handles the proprietary binary protocol coming off the hardware, including framing, CRC validation, and packet reassembly with tolerance for dropped bytes.</p>
+                            </div>
+                            <div class="feature-item">
+                                <strong>ML Classification Pipeline</strong>
+                                <p>TensorFlow Lite model trained in Python with scikit-learn feature engineering. The model classifies signal states in under 15 ms on-device, with confidence scores surfaced in the app UI.</p>
+                            </div>
+                            <div class="feature-item">
+                                <strong>Live Spectrum Visualizer</strong>
+                                <p>Real-time animated frequency spectrum display built in Flutter, updating at up to 30 fps as new FFT frames arrive, with peak-hold markers and adjustable dB scale.</p>
+                            </div>
+                            <div class="feature-item">
+                                <strong>Session Logging to Firebase</strong>
+                                <p>Every analysis session, detected events, and classification results are automatically synced to Firestore, giving engineers a searchable audit trail of device behaviour over time.</p>
+                            </div>
+                            <div class="feature-item">
+                                <strong>Python Training Pipeline</strong>
+                                <p>Pandas and NumPy power the offline data preparation workflow: raw capture files are cleaned, windowed, and transformed into training datasets fed into scikit-learn for feature selection before TensorFlow model training.</p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="case-study-section">
+                        <h2>Technical Execution</h2>
+                        <p>The Flutter app communicates with the hardware over a Bluetooth serial bridge, parsing incoming binary frames at the Dart isolate level to keep the UI thread free. Processed FFT frames are passed to a TensorFlow Lite interpreter embedded in the app bundle. On the Python side, a Pandas-based ingestion pipeline reads raw capture logs, NumPy handles vectorised windowing and FFT preprocessing, and scikit-learn runs feature importance selection before the final model is compiled and quantised to a TFLite flatbuffer. Firebase Authentication gates access to session data in Firestore, with Cloud Storage used for archiving large raw capture files.</p>
+                    </section>
+
+                    <section class="case-study-section">
+                        <h2>Results and Impact</h2>
+                        <p>The app reduced the time engineers at Bloxynergy BV spent diagnosing signal anomalies from hours of manual desktop review to real-time field identification. The ML classifier hit 94% accuracy on the client's labelled test set. Field engineers can now walk up to a device, connect the app, and receive a classification result within seconds. Firebase session logs gave the R&amp;D team a structured dataset for improving the hardware firmware going forward.</p>
+                    </section>
+
+                    <div class="case-study-tech">
+                        <span class="tech-tag">Flutter</span>
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">TensorFlow Lite</span>
+                        <span class="tech-tag">scikit-learn</span>
+                        <span class="tech-tag">Pandas</span>
+                        <span class="tech-tag">NumPy</span>
+                        <span class="tech-tag">Firebase</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info"></div>
+                <div class="footer-links-group">
+                    <a href="/#services" class="footer-link">Services</a>
+                    <a href="/#case-studies" class="footer-link">Case Studies</a>
+                    <a href="/#process" class="footer-link">Process</a>
+                    <a href="/#about" class="footer-link">About</a>
+                    <a href="/#contact" class="footer-link">Contact</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 BazazLab. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Brand icon rotation on scroll
+        const brandIcon = document.getElementById('brandIcon');
+        if (brandIcon) {
+            let rafPending = false;
+            window.addEventListener('scroll', () => {
+                if (rafPending) return;
+                rafPending = true;
+                requestAnimationFrame(() => {
+                    rafPending = false;
+                    brandIcon.style.transform = `rotate(${window.pageYOffset * 0.3}deg)`;
+                });
+            }, { passive: true });
+        }
+
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navLinks = document.querySelector('.nav-links');
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            mobileMenuBtn.classList.toggle('active');
+        });
+
+        // Native smooth scrolling handled by CSS scroll-behavior: smooth
+    </script>
+</body>
+</html>

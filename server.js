@@ -21,6 +21,11 @@ app.get('/case-studies/lexiwork.html', (req, res) => {
     res.sendFile(path.join(__dirname, 'case-studies', 'lexiwork.html'));
 });
 
+// Explicit route for Bloxynergy BV case study
+app.get('/case-studies/bloxynergy.html', (req, res) => {
+    res.sendFile(path.join(__dirname, 'case-studies', 'bloxynergy.html'));
+});
+
 app.listen(PORT, () => {
     console.log(`BazazLab website running at http://localhost:${PORT}`);
 });
