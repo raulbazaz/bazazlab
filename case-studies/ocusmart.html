@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OcuSmart | Bazaz Lab</title>
+    <meta name="description"
+        content="How we built an AI-powered eye strain detection system using computer vision, ML algorithms, and head movement tracking with OMI glasses integration.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/css/styles.css">
+    <style>
+        .case-study-page {
+            padding-top: 100px;
+            min-height: 100vh;
+        }
+
+        .case-study-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px 60px;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-secondary);
+            font-size: 14px;
+            margin-bottom: 40px;
+            transition: color 0.3s ease;
+        }
+
+        .back-link:hover {
+            color: var(--accent-color);
+        }
+
+        /* Two-column layout with mockup */
+        .case-study-layout {
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 72px;
+            align-items: start;
+        }
+
+        .case-study-content {
+            min-width: 0;
+        }
+
+        /* Sticky mockup column */
+        .case-study-mockup-col {
+            position: sticky;
+            top: 110px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Header */
+        .case-study-header {
+            margin-bottom: 20px;
+        }
+
+        .case-study-header .case-category {
+            font-size: 12px;
+            color: var(--accent-color);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 600;
+        }
+
+        .case-study-header h1 {
+            font-size: clamp(36px, 5vw, 52px);
+            margin: 10px 0 6px;
+            letter-spacing: -2px;
+        }
+
+        .case-study-header .subtitle {
+            font-size: 18px;
+            color: var(--text-secondary);
+        }
+
+        /* Meta bar */
+        .case-study-meta {
+            display: flex;
+            gap: 32px;
+            padding: 12px 0;
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+        }
+
+        .meta-item {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .meta-label {
+            font-size: 11px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+
+        .meta-value {
+            font-size: 15px;
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+
+        /* Sections */
+        .case-study-section {
+            margin-bottom: 20px;
+            padding: 0;
+        }
+
+        .case-study-section h2 {
+            font-size: 20px;
+            color: var(--accent-color);
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .case-study-section p {
+            color: var(--text-primary);
+            font-size: 15px;
+            line-height: 1.75;
+        }
+
+        /* Features grid */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+            margin-top: 12px;
+        }
+
+        .feature-item {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            padding: 18px;
+            border-radius: 12px;
+        }
+
+        .feature-item strong {
+            display: block;
+            margin-bottom: 6px;
+            color: var(--text-primary);
+            font-size: 14px;
+        }
+
+        .feature-item p {
+            font-size: 13px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        /* Tech tags */
+        .case-study-tech {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            padding-top: 24px;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .tech-tag {
+            padding: 8px 16px;
+            background: var(--accent-color);
+            color: #1a1a1a;
+            font-size: 13px;
+            font-weight: 600;
+            border-radius: 10px;
+        }
+
+        /* Phone frame */
+        .android-mockup {
+            display: flex;
+            justify-content: center;
+        }
+
+        .phone-frame {
+            width: 240px;
+            height: 500px;
+            background: #111;
+            border-radius: 38px;
+            border: 3px solid #2a2a2a;
+            box-shadow: 0 0 0 1px #1a1a1a, 0 32px 80px rgba(0, 0, 0, 0.7), inset 0 0 0 2px #1a1a1a;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .phone-notch {
+            width: 80px;
+            height: 20px;
+            background: #111;
+            border-radius: 0 0 14px 14px;
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+        }
+
+        .phone-screen {
+            width: 100%;
+            flex: 1;
+            background: linear-gradient(160deg, #0d1117 0%, #0a1628 100%);
+            overflow: hidden;
+            padding: 28px 14px 14px;
+        }
+
+        .phone-screen--img {
+            padding: 0 !important;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .screenshot-slider {
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+
+        .screenshot-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .screenshot-slide.active {
+            opacity: 1;
+        }
+
+        .phone-home-bar {
+            height: 22px;
+            background: #111;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .phone-home-bar::after {
+            content: '';
+            width: 55px;
+            height: 4px;
+            background: #2a2a2a;
+            border-radius: 2px;
+        }
+
+        /* Mockup nav buttons */
+        .mockup-nav {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            margin-top: 16px;
+        }
+
+        .mockup-btn {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            border: 1px solid var(--border-color);
+            background: var(--bg-card);
+            color: var(--text-primary);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 13px;
+            transition: all 0.2s ease;
+        }
+
+        .mockup-btn:hover {
+            border-color: var(--accent-color);
+            color: var(--accent-color);
+        }
+
+        .mockup-counter {
+            font-size: 12px;
+            color: var(--text-muted);
+            min-width: 36px;
+            text-align: center;
+        }
+
+        @media (max-width: 900px) {
+            .case-study-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .case-study-mockup-col {
+                position: static;
+                order: -1;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="/" class="nav-brand">
+                <svg class="brand-icon" id="brandIcon" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <circle cx="12" cy="3" r="3" fill="white" />
+                    <circle cx="19.8" cy="7.5" r="3" fill="white" />
+                    <circle cx="19.8" cy="16.5" r="3" fill="white" />
+                    <circle cx="12" cy="21" r="3" fill="white" />
+                    <circle cx="4.2" cy="16.5" r="3" fill="white" />
+                    <circle cx="4.2" cy="7.5" r="3" fill="white" />
+                </svg>
+                <span class="brand-bold">Bazaz</span> Lab
+            </a>
+            <ul class="nav-links">
+                <li><a href="/#services">SERVICES</a></li>
+                <li><a href="/#case-studies">CASE STUDIES</a></li>
+                <li><a href="/#process">PROCESS</a></li>
+                <li><a href="/#about">ABOUT</a></li>
+            </ul>
+            <div class="nav-actions">
+                <a href="/#contact" class="cta-btn">CONTACT</a>
+            </div>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <main class="case-study-page">
+        <div class="case-study-container">
+            <a href="/#case-studies" class="back-link">
+                <i class="fas fa-arrow-left"></i>
+                Back to Case Studies
+            </a>
+
+            <div class="case-study-layout">
+
+                <!-- LEFT: Content -->
+                <div class="case-study-content">
+                    <header class="case-study-header">
+                        <span class="case-category">Computer Vision + AI Health App</span>
+                        <h1>OcuSmart</h1>
+                        <p class="subtitle">Eye Strain Detection and Prevention System</p>
+                    </header>
+
+                    <div class="case-study-meta">
+                        <div class="meta-item">
+                            <span class="meta-label">Platform</span>
+                            <span class="meta-value">Android</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Domain</span>
+                            <span class="meta-value">Health and Wellness</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Hardware</span>
+                            <span class="meta-value">OMI Glasses</span>
+                        </div>
+                    </div>
+
+                    <section class="case-study-section">
+                        <h2>The Challenge</h2>
+                        <p>Digital eye strain affects millions of knowledge workers spending extended hours in front of
+                            screens. Traditional solutions rely on passive time-based reminders that lack contextual
+                            awareness. Our client needed a system that could proactively detect when a user's eyes and
+                            head are under stress, analyze visual strain patterns, and intervene with intelligent
+                            notifications before discomfort becomes significant.</p>
+                    </section>
+
+                    <section class="case-study-section">
+                        <h2>The Solution</h2>
+                        <p>We developed OcuSmart, an intelligent eye strain detection system that integrates with OMI
+                            open source glasses to capture real time visual and motion data. The system uses computer
+                            vision algorithms to analyze screen brightness converted to greyscale, applies machine
+                            learning models to detect strain patterns, and monitors head positioning to determine user
+                            engagement and movement patterns. When prolonged stillness is detected, a key indicator of
+                            potential eye strain, the system sends intelligent, contextual notifications prompting the
+                            user to take breaks.</p>
+                    </section>
+
+                    <section class="case-study-section">
+                        <h2>Key Features Delivered</h2>
+                        <div class="features-grid">
+                            <div class="feature-item">
+                                <strong>Greyscale Brightness Analysis</strong>
+                                <p>Real-time screen capture conversion to greyscale with brightness level analysis to
+                                    assess visual load and screen intensity impact on eye strain.</p>
+                            </div>
+                            <div class="feature-item">
+                                <strong>Head Movement Tracking</strong>
+                                <p>OMI glasses integration provides continuous head position and movement metrics.
+                                    Prolonged stillness exceeding 30 minutes triggers strain prevention notifications.
+                                </p>
+                            </div>
+                            <div class="feature-item">
+                                <strong>ML Powered Strain Detection</strong>
+                                <p>Machine learning pipeline analyzes combined visual and motion data to predict strain
+                                    risk before symptoms manifest, with adaptive sensitivity tuning.</p>
+                            </div>
+                            <div class="feature-item">
+                                <strong>Distance Parameter Measurement</strong>
+                                <p>OMI glasses track viewing distance and angle, enabling detection of unhealthy screen
+                                    proximities and postural strain patterns.</p>
+                            </div>
+                            <div class="feature-item">
+                                <strong>Intelligent Break Prompts</strong>
+                                <p>Context-aware notifications suggest specific break activities based on detected
+                                    strain type: eye movement exercises, distance focus, or posture adjustment.</p>
+                            </div>
+                            <div class="feature-item">
+                                <strong>User Engagement Analytics</strong>
+                                <p>Detailed dashboard showing strain patterns over time, break adherence rates, and
+                                    personalized recommendations for optimizing work habits.</p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="case-study-section">
+                        <h2>Technical Execution</h2>
+                        <p>The OcuSmart architecture comprises three main layers. The hardware layer leverages OMI
+                            open source glasses for real time sensor data acquisition including head position, rotation,
+                            and distance metrics. The processing layer ingests this data alongside screen captures,
+                            performs greyscale conversion and brightness analysis using OpenCV, and feeds feature
+                            vectors into trained ML models for strain classification. The application layer delivers
+                            notifications and analytics, with a persistent database tracking user sessions, strain
+                            events, and intervention outcomes to continuously improve model accuracy.</p>
+                    </section>
+
+                    <section class="case-study-section">
+                        <h2>Results and Impact</h2>
+                        <p>OcuSmart users reported a 40 percent reduction in daily eye strain symptoms within the first
+                            two weeks of deployment. The system achieved 87 percent accuracy in predicting user fatigue
+                            events, enabling proactive rather than reactive intervention. Head movement analysis
+                            revealed that users who followed notifications had 60 percent better engagement metrics with
+                            break activities. The combination of visual and motion based detection proved significantly
+                            more effective than either modality alone, validating the integrated approach.</p>
+                    </section>
+
+                    <div class="case-study-tech">
+                        <span class="tech-tag">Computer Vision</span>
+                        <span class="tech-tag">OpenCV</span>
+                        <span class="tech-tag">Machine Learning</span>
+                        <span class="tech-tag">TensorFlow</span>
+                        <span class="tech-tag">scikit-learn</span>
+                        <span class="tech-tag">OMI Glasses SDK</span>
+                        <span class="tech-tag">Python</span>
+                    </div>
+                </div>
+
+                <!-- RIGHT: Sticky Android Mockup -->
+                <div class="case-study-mockup-col">
+                    <div class="android-mockup">
+                        <div class="phone-frame">
+                            <div class="phone-screen phone-screen--img">
+                                <div class="screenshot-slider">
+                                    <img class="screenshot-slide active" src="/assets/ocusmart-1.jpeg"
+                                        alt="OcuSmart screenshot 1">
+                                    <img class="screenshot-slide" src="/assets/ocusmart-2.jpeg"
+                                        alt="OcuSmart screenshot 2">
+                                </div>
+                            </div>
+                            <div class="phone-home-bar"></div>
+                        </div>
+                    </div>
+                    <!-- Nav buttons below the mockup -->
+                    <div class="mockup-nav">
+                        <button class="mockup-btn" id="prevBtn" onclick="slideScreenshot(-1)">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <span class="mockup-counter" id="slideCounter">1 / 2</span>
+                        <button class="mockup-btn" id="nextBtn" onclick="slideScreenshot(1)">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info"></div>
+                <div class="footer-links-group">
+                    <a href="/#services" class="footer-link">Services</a>
+                    <a href="/#case-studies" class="footer-link">Case Studies</a>
+                    <a href="/#process" class="footer-link">Process</a>
+                    <a href="/#about" class="footer-link">About</a>
+                    <a href="/#contact" class="footer-link">Contact</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 BazazLab. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Brand icon rotation on scroll
+        const brandIcon = document.getElementById('brandIcon');
+        if (brandIcon) {
+            let rafPending = false;
+            window.addEventListener('scroll', () => {
+                if (rafPending) return;
+                rafPending = true;
+                requestAnimationFrame(() => {
+                    rafPending = false;
+                    brandIcon.style.transform = `rotate(${window.pageYOffset * 0.3}deg)`;
+                });
+            }, { passive: true });
+        }
+
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navLinks = document.querySelector('.nav-links');
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            mobileMenuBtn.classList.toggle('active');
+        });
+
+        // Screenshot slider
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.screenshot-slide');
+        const counter = document.getElementById('slideCounter');
+        const total = slides.length;
+
+        function slideScreenshot(dir) {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (currentSlide + dir + total) % total;
+            slides[currentSlide].classList.add('active');
+            counter.textContent = `${currentSlide + 1} / ${total}`;
+        }
+    </script>
+</body>
+
+</html>
